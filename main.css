@@ -1,0 +1,50 @@
+body {
+    margin: 0;
+    background-color: white:
+}
+
+header h1 {
+    text-align: center;
+    font-size: 52px;
+    margin-top: 75px; 
+}
+
+h2 {
+    font-size: 35px;
+    border: black;
+    margin: 25px;
+    text-align: center;
+    margin: 25px;
+}
+
+main {
+    border: 2px black solid;
+    padding: 100px;
+    margin-bottom: 30px;
+}
+
+main {
+    width: 400px;
+    margin: 0 auto;
+}
+
+h3 {
+    text-align: center;
+}
+
+.buttonCenter {
+    text-align: center;
+    padding: 30px;
+    margin-top: 20px;
+}
+
+.questionBox{
+    border: 2px black solid;
+    padding: 15px;
+    margin-top: 85px;
+    margin-bottom: 15px;
+}
+
+p {
+    text-align: center;
+}
