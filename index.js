@@ -112,6 +112,7 @@ const STORE = [
     },
     {
         questionTally: [1],
+        currentQuestion: 0,
     },
 ];
 
@@ -130,12 +131,12 @@ function startQuiz() {
 // try moving if statement to generate answers 6/18
 function renderForm() {
     console.log('renderForm ran')
-    if (currentQuestion < STORE.length) {
+    if (currentQuestion < STORE.length-1) {
            let formHTML = `
            <ul class="question-score">
            <li>Question: <span class="js-q-tally">${STORE[11].questionTally++}</span> / 11</li>
            <li>Score: <span class="js-score">${score}</span></li>
-       </ul>
+       </ul class="start-quiz">
         <form>
         <fieldset>
         <h3></h3>
@@ -161,13 +162,12 @@ function renderForm() {
     } else {
         finalScore();
     }
+    $('.restart-button').click(function() {
+
+    })
     $('.next-button').hide();
 }
 
-
-
-//Creates <li> answers appended to quiz <ul>;
-//calls answer response function
 function generateAnswers() {
     console.log('generateAnswers ran')
     STORE[currentQuestion].answers.map(function(answerValue, answerIndex) {
@@ -177,6 +177,8 @@ function generateAnswers() {
     });
     $(generateAnswerResponse());
 }
+
+
 // Checks if answer is correct or incorrect and displays appropriate response
 function generateAnswerResponse() {
     console.log('generateAnswerResponse ran')
@@ -216,6 +218,8 @@ function updateScore() {
 
 function resetQuiz() {
     score = 0;
+    currentQuestion = 0;
+    $(STORE[11].questionTally = 1);
 }
 
 function nextQuestion() {
@@ -249,22 +253,36 @@ function finalScore() {
         array = poor;
     };
     
-    return $('.welcome-text').html(
-        `<h3>${array[0]}</h3>
+    $('.welcome-text').html(
+        `<div class="end-quiz">
+        <h3>${array[0]}</h3>
         <p>Your score is ${score} / 11</p>
-        <button type="submit" class="restart-button Button">Back to School</button`);
+         <button type="submit" class="restart-button">Go Back to School</button>
+         </div>`);
+         restartQuiz();
 }
 
 function restartQuiz() {
+    console.log('restartQuiz ran')
     $('.restart-button').click(function(event) {
         event.preventDefault();
-        resetQuiz();
-    })
+        $('.end-quiz').replaceWith(`
+        <div class="welcome-text">
+        <h2>So, you think you know rock-n'-roll?</h2>
+            <div class="buttonCenter">
+            <button class="start-quiz">
+                Start Your Quiz
+            </button>
+            <p><strong>(... and prepare to get schooled.</strong>)</p>
+        </div>
+    </div>`);
+    resetQuiz();
+    startQuiz();
+    });
 }
 
 function handleQuestions() {
     startQuiz();
-    // renderAQ();
     console.log('handleQuestions ran!')
 }; 
 
