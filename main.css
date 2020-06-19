@@ -1,3 +1,10 @@
+* {
+    box-sizing: border-box;
+}
+
+
+
+
 body {
     margin: 0;
     background-color: white:
@@ -7,6 +14,28 @@ header h1 {
     text-align: center;
     font-size: 52px;
     margin-top: 75px; 
+    border: solid 5px #E63946;
+}
+
+ul {
+    text-align: center;
+    list-style-type: none;
+}
+
+form label {
+    display: block; 
+}
+
+fieldset {
+    width: 80%;
+    padding: 40px;
+    margin: 0 auto;
+    /*border: solid 3px #E63946; */
+}
+
+legend {
+    text-align: center;
+    font-size: 22px;
 }
 
 h2 {
@@ -17,16 +46,17 @@ h2 {
     margin: 25px;
 }
 
-main {
-    border: 2px black solid;
-    padding: 100px;
-    margin-bottom: 30px;
+.result {
+    text-align: center;
+    color: red;
 }
 
 main {
     width: 400px;
-    margin: 0 auto;
+    margin: 0 auto; ;
 }
+
+
 
 h3 {
     text-align: center;
@@ -47,4 +77,14 @@ h3 {
 
 p {
     text-align: center;
+}
+
+.submit-button {
+    text-align: center;
+    margin: 0 auto;
+}
+
+.next-button {
+    text-align: center;
+    margin: 0 auto;
 }

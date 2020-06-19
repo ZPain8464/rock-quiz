@@ -1,6 +1,6 @@
 // question database 
 const STORE = [
-    {
+    {// 1 
         question: 'Which member of The Beatles died first?',
         answers: [
             'Paul McCartney',
@@ -10,7 +10,7 @@ const STORE = [
         ],
         correctAnswer: 'John Lennon'
     },
-    {
+    {// 2 
         question: 'Which Metallica member is the most recent addition to their lineup?',
         answers: [
             'Jason Newsted',
@@ -20,7 +20,7 @@ const STORE = [
         ],
         correctAnswer: 'Robert Trujillo'
     },
-    {
+    {// 3 
         question: 'Which of the following is NOT a song by Led Zeppelin?',
         answers: [
             'Immigrant Song',
@@ -30,8 +30,8 @@ const STORE = [
         ],
         correctAnswer: 'Tears in Heaven'
     },
-    {
-        question: 'Which of these frontmen is referred to as the "Prince of Darnkness"?',
+    {// 4
+        question: 'Which of these frontmen is referred to as the "Prince of Darkness"?',
         answers: [
             'Ozzy Osbourne',
             'Robert Plant',
@@ -40,8 +40,8 @@ const STORE = [
         ],
         correctAnswer: 'Ozzy Osbourne',
     },
-    {
-        question: 'Fill in the correct lyrics to the following: For those about to rock, __ ____ __.',
+    { // 5
+        question: 'Fill in the correct lyrics to the following: "For those about to rock, ____."',
         answers: [
             "We're not gonna take it!",
             "We salute you!",
@@ -50,7 +50,7 @@ const STORE = [
         ],
         correctAnswer: "We salute you!",
     },
-    {
+    { // 6
         question: "Which Led Zeppelin song references J.R. Tolkien's LOTR character Gollum?",
         answers: [
             "Ramble On",
@@ -60,8 +60,8 @@ const STORE = [
         ],
         correctAnswer: "Ramble On",
     },
-    {
-        question: "Who's the godfather of rock-n'-roll?",
+    { // 7 
+        question: "Who's considered the godfather of rock-n'-roll?",
         answers: [
             'James Jamerson',
             'Chuck Berry',
@@ -70,7 +70,7 @@ const STORE = [
         ],
         correctAnswer: 'Chuck Berry',
     },
-    {
+    { // 8
         question: 'Which member of the band Rush passed away in January, 2020?',
         answers: [
             'John Bonham',
@@ -80,17 +80,17 @@ const STORE = [
         ],
         correctAnswer: 'Neil Pert',
     },
-    {
+    { // 9
         question: 'Creedence Clearwater Revival (CCR) were from which state?',
         answers: [
-            'Teaxas',
+            'Texas',
             'Alabama',
             'Mississippi',
             'California',
         ],
         correctAnswer: 'California',
     },
-    {
+    { // 10
         question: 'Which of the following bands consists only of American members?',
         answers: [
             'Iron Maiden',
@@ -100,7 +100,7 @@ const STORE = [
         ],
         correctAnswer: 'Megadeth',
     },
-    {
+    { // 11
         question: 'Tony Iommi played guitar in which band?',
         answers: [
             'Immortal',
@@ -110,61 +110,162 @@ const STORE = [
         ],
         correctAnswer: 'Black Sabbath',
     },
+    {
+        questionTally: [1],
+    },
 ];
 
-// variables to store quiz score and question number information 
-
+let currentQuestion = 0;
 let score = 0;
-let questionNumber = 0;
 
-//template to generate each question 
-function generateQuestion() {}
-
-//increments the number value of the "score" variable by one
-//and updates the "score" number text in the quiz view
-function updateScore() {}
-
-function updateQuestionNumber() {}
-
-function resetStats() {}
-
-
-//hide existing welcome message
-
-//display form
-    //access the questions array, create <li> with question and answers
+// User clicks "start" button
+//calls renderForm function
 function startQuiz() {
-    $('button').on('click')
-    console.log('function-ran')
+   console.log('startQuiz ran')
+   $(".start-quiz").on('click', function() {
+       $(renderForm());
+   })
+};
+
+// try moving if statement to generate answers 6/18
+function renderForm() {
+    console.log('renderForm ran')
+    if (currentQuestion < STORE.length) {
+           let formHTML = `
+           <ul class="question-score">
+           <li>Question: <span class="js-q-tally">${STORE[11].questionTally++}</span> / 11</li>
+           <li>Score: <span class="js-score">${score}</span></li>
+       </ul>
+        <form>
+        <fieldset>
+        <h3></h3>
+            <ul class="js-quiz">
+
+            </ul>
+            <div class="result"></div>
+            <div class="quiz-buttons">
+            <button class="submit-button">
+            Submit
+            </button>
+            <button class="next-button">
+            Next Question
+            </button>
+            </div>
+            </div>
+            </fieldset>
+            </form>`
+    $('.welcome-text').html(formHTML);
+        $('h3').append(STORE[currentQuestion].question);
+        generateAnswers();
+
+    } else {
+        finalScore();
+    }
+    $('.next-button').hide();
 }
 
 
-function submitAnswer() {
-    //check if answer is correct w/ correctAnswer
-    //if answer is correct, add +1 score and congratulations message
-    //if answer is incorrect, tell user correct answer 
-    //render the 'next' button
+
+//Creates <li> answers appended to quiz <ul>;
+//calls answer response function
+function generateAnswers() {
+    console.log('generateAnswers ran')
+    STORE[currentQuestion].answers.map(function(answerValue, answerIndex) {
+        $(`<li>
+        <input id="${answerIndex}" value="${answerValue}" name="color" type="radio">
+        <label>${answerValue}</label></li>`).appendTo('.js-quiz');
+    });
+    $(generateAnswerResponse());
+}
+// Checks if answer is correct or incorrect and displays appropriate response
+function generateAnswerResponse() {
+    console.log('generateAnswerResponse ran')
+    $('.submit-button').on('click', function(event) {
+        event.preventDefault();
+        let selected = $('input:checked').val();
+        let correct = STORE[currentQuestion].correctAnswer;
+        if (!selected) {
+            alert("Ya kinda gotta pick an answer, dude.")
+            return; 
+        }
+        if (selected === correct) {
+            $('.result').html("<p><strong>Your answer is correct you rock star!</strong></p>"); 
+            updateScore();
+        } else {
+            $('.result').html("<p><strong>Your answer is wrong. The correct answer is " + STORE[currentQuestion].correctAnswer + ". Go study more!</strong></p>")
+
+        }
+        $('.next-button').show()
+        $('.submit-button').hide()
+        $(nextQuestion());
+    })
 }
 
-function createThing() {}
 
-function correctAnswer() {}
+// updates currentQuestion variable
+function updateCurrentQuestion() {
+    console.log('updateCurrentQuestion ran')
+    currentQuestion++;
+}
 
-function wrongAnswer() {}
+//Updates score when user selects correct answer
+function updateScore() {
+    score++;
+    $(".js-score").text(score)
+};
 
-function nextQuestion() {}
+function resetQuiz() {
+    score = 0;
+}
 
-function finalScore() {}
+function nextQuestion() {
+    console.log('nextQuestion ran')
+    $('.next-button').click(function(event) {
+        event.preventDefault();
+        updateCurrentQuestion();
+        renderForm();
+    })
+}
 
-function restartQuiz() {}
+function finalScore() {
+    console.log('finalScore ran')
+    const great = [
+        "You're a rockstar! Put another dime in the jukebox, baby."
+    ];
 
-//runs the functions
-function makeQuiz() {
+    const good = [
+        "You're no rock star, but ya did alright."
+    ];
+
+    const poor = [
+        "You need to listen to more rock-n'-roll. Back to the front!"
+    ];
+
+    if (score >= 8) {
+        array = great;
+    } else if (score < 8 && score >= 5) {
+        array = good;
+    } else {
+        array = poor;
+    };
+    
+    return $('.welcome-text').html(
+        `<h3>${array[0]}</h3>
+        <p>Your score is ${score} / 11</p>
+        <button type="submit" class="restart-button Button">Back to School</button`);
+}
+
+function restartQuiz() {
+    $('.restart-button').click(function(event) {
+        event.preventDefault();
+        resetQuiz();
+    })
+}
+
+function handleQuestions() {
     startQuiz();
-    generateQuestion();
-    submitAnswer();
-    nextQuestion();
-    restartQuiz();
-}
+    // renderAQ();
+    console.log('handleQuestions ran!')
+}; 
 
-// $(makeQuiz)
+$(handleQuestions())
