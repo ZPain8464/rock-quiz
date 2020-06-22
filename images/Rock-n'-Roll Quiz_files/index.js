@@ -134,7 +134,12 @@ function renderForm() {
     console.log('renderForm ran')
     if (currentQuestion < STORE.length-1) {
            let formHTML = 
+// <ul class="question-score">
+//     <li>Question: <span class="js-q-tally">${STORE[11].questionTally++}</span> / 11</li>
+//     <li>Score: <span class="js-score">${score}</span> / 11</li>
+// </ul class="start-quiz">
 `
+<p>Question: <span class="js-q-tally">${STORE[11].questionTally++}</span> / 11   Score: <span class="js-score">${score}</span> / 11 </p>
 <form>
     <fieldset>
         <h3></h3>
@@ -147,7 +152,7 @@ function renderForm() {
             <button type="button" class="next-button button">
                 Next Question
             </button>
-            <p>Question: <span class="js-q-tally">${STORE[11].questionTally++}</span> / 11   Score: <span class="js-score">${score}</span> / 11 </p>
+        </div>
     </fieldset>
 </form>`;
     $('.welcome-text').html(formHTML);
@@ -190,13 +195,12 @@ function generateAnswerResponse() {
             $('.result').html("<p>Your answer is correct you rock star!</p>"); 
             updateScore();
         } else {
-            $('.result').html("<p>Your answer is wrong. The correct answer is " + STORE[currentQuestion].correctAnswer + ".</p>")
+            $('.result').html("<p>Your answer is wrong. The correct answer is " + STORE[currentQuestion].correctAnswer + ". Go study more!</p>")
 
         }
         $('.next-button').show()
         $('.submit-button').hide()
         $(nextQuestion());
-
     })
 }
 
@@ -236,15 +240,15 @@ function nextQuestion() {
 function finalScore() {
     console.log('finalScore ran')
     const great = [
-        "<p>You're a rockstar! Put another dime in the jukebox, baby.</p>"
+        "You're a rockstar! Put another dime in the jukebox, baby."
     ];
 
     const good = [
-        "<p>You're no jukebox hero, but ya did alright.</p>"
+        "You're no jukebox hero, but ya did alright."
     ];
 
     const poor = [
-        "<p>You need to listen to more rock-n'-roll. Back to the front!<p>"
+        "You need to listen to more rock-n'-roll. Back to the front!"
     ];
 
     if (score >= 8) {
@@ -273,7 +277,7 @@ function restartQuiz() {
         <div class="welcome-text">
         <h2>So, you think you know rock-n'-roll?</h2>
             <div class="buttonCenter">
-            <button class="start-button">
+            <button class="start-quiz">
                 Start Your Quiz
             </button>
             <p><strong>(... and prepare to get schooled.</strong>)</p>
