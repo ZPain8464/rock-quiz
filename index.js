@@ -144,7 +144,7 @@ function renderForm() {
             <button type="button" class="submit-button button" >
                 Submit
             </button>
-            <button type="button" class="next-button button">
+            <button type="button" class="next-button">
                 Next Question
             </button>
             <p>Question: <span class="js-q-tally">${STORE[11].questionTally++}</span> / 11   Score: <span class="js-score">${score}</span> / 11 </p>
@@ -157,9 +157,6 @@ function renderForm() {
     } else {
         finalScore();
     }
-    $('.restart-button').click(function() {
-
-    });
     $('.next-button').hide();
 }
 
@@ -224,7 +221,7 @@ function resetQuiz() {
 // renders question form for each iteration
 function nextQuestion() {
     console.log('nextQuestion ran')
-    $('.next-button').click(function(event) {
+    $('.next-button').click( function(event) {
         event.preventDefault();
         updateCurrentQuestion();
         renderForm();
@@ -286,6 +283,7 @@ function restartQuiz() {
 // starts quiz when page loads
 function handleQuestions() {
     startQuiz();
+    // renderForm();
     console.log('handleQuestions ran!')
 }; 
 
