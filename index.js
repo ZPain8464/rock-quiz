@@ -112,7 +112,6 @@ const STORE = [
     },
     {
         questionTally: [1],
-        currentQuestion: 0,
     },
 ];
 
@@ -135,7 +134,7 @@ function renderForm() {
     if (currentQuestion < STORE.length-1) {
            let formHTML = 
 `
-<form>
+<form class="form">
     <fieldset>
         <h3></h3>
         <ul class="js-quiz">
@@ -187,7 +186,7 @@ function generateAnswerResponse() {
             $('.result').html("<p>Your answer is correct you rock star!</p>"); 
             updateScore();
         } else {
-            $('.result').html("<p>Your answer is wrong. The correct answer is " + STORE[currentQuestion].correctAnswer + ".</p>")
+            $('.result').html("<p>Your answer is wrong. The correct answer is " + STORE[currentQuestion].correctAnswer + "!</p>")
 
         }
         $('.next-button').show()
@@ -215,6 +214,7 @@ function resetQuiz() {
     score = 0;
     currentQuestion = 0;
     $(STORE[11].questionTally = 1);
+    $('.result').empty();
 }
 
 // calls and updates currentQuestion function;
@@ -222,6 +222,7 @@ function resetQuiz() {
 function nextQuestion() {
     console.log('nextQuestion ran')
     $('.next-button').click( function(event) {
+        $('.result').empty();
         event.preventDefault();
         updateCurrentQuestion();
         renderForm();
@@ -245,16 +246,16 @@ function finalScore() {
     ];
 
     if (score >= 8) {
-        array = great;
-    } else if (score < 8 && score >= 5) {
-        array = good;
+        message = great;
+    } else if (score >= 5) {
+        message = good;
     } else {
-        array = poor;
+        message = poor;
     };
     
     $('.welcome-text').html(
         `<div class="end-quiz">
-        <h3>${array[0]}</h3>
+        <h3>${message[0]}</h3>
         <p>Your score is ${score} / 11</p>
          <button type="button" class="restart-button button">Go Back to School</button>
          </div>`);

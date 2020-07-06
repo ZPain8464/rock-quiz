@@ -1,0 +1,293 @@
+* 
+
+/* Mobile-first CSS */
+
+{
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+:root {
+    font-size: 12px;
+}
+
+
+body {
+    background-color: #FFE5D9;
+}
+
+header h1 {
+    text-align: center;
+    font-size: 3.5rem;
+    font-family: 'Ultra', serif;
+    color: #F48C06;
+    margin-top: 3.5rem; 
+    margin-right: 1.2rem;
+    margin-left: 1.2rem;
+    border: solid 0.4rem #DC2F02;
+    padding: 1.2rem;
+    border-radius: 20px;
+    background-color: #6930C3;
+    background-clip: padding-box;
+}
+
+main {
+    width: 100%;
+}
+
+h2 {
+    font-size: 1.5rem;
+    margin-top: 3rem;
+    font-family: 'Noto Serif JP', serif;
+    text-align: center;
+    color: #293241;
+}
+
+button {
+    text-align: center;
+    margin-top: 3rem;
+    margin-bottom: 5px;
+    border-radius: 20px;
+    border: solid 3px #DC2F02;
+    padding: 2.2rem;
+    font-family: 'Noto Serif JP', serif;
+    color: #F48C06;
+    background-color: #6930C3;
+    background-clip: padding-box;
+    font-size: 1.8rem;
+}
+
+.buttonCenter {
+    text-align: center;
+}
+
+.buttonCenter p {
+    font-size: 1.2rem;
+    margin-top: 1.2rem;
+    color: #293241;
+    font-family: 'Noto Serif JP', serif;
+
+}
+
+.next-button, .submit-button {
+    padding: 1.2rem;
+}
+
+p {
+    text-align: center;
+    font-size: 1.4rem;
+    color: #293241;
+    font-family: 'Noto Serif JP', serif;
+
+}
+
+form {
+    display: flex;
+    text-align: center;
+}
+
+fieldset {
+    width: 90%;
+    margin: 0 auto;
+    border: 0 none;
+}
+
+.questionBox{
+    border: 5px #DC2F02 solid;
+    padding: 15px;
+    margin-top: 35px;
+    margin-bottom: 35px;
+    margin-right: 1.2rem;
+    margin-left: 1.2rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    border-radius: 20px;
+    background-color: #FFE5D9;
+    text-align: center;
+}
+
+.rockBox {
+    border: 5px #DC2F02 solid;
+    border-radius: 20px;
+    margin-top: 20px;
+    margin-bottom: 20px;
+    margin-right: auto;
+    margin-left: auto;
+    width: 95%;
+    background: url(images/groovy-2-background.jpg) fixed;
+    display: flex;
+    flex-direction: column;
+}
+
+ul {
+    /* text-align: center; */
+    list-style-type: none;
+    margin-top: 1.2rem;
+}
+
+li {
+    display: flex;
+    align-items: center;
+    margin-top: 1.1rem;
+    color: #293241;
+    font-family: 'Noto Serif JP', serif;
+
+
+}
+
+input[type="radio"] {
+    margin-right: 1.2rem;
+    }
+
+.result p {
+    color: #6930C3;
+    margin-right: 1.2rem;
+    margin-left: 1.2rem;
+}
+
+.end-quiz {
+    text-align: center;
+}
+
+/* Tablet CSS */
+
+@media all and (min-width: 768px)
+
+{
+    :root {
+        font-size: 14px;
+    }
+
+    main {
+        width: 100%;
+    }
+
+    header h1 {
+        text-align: center;
+        font-size: 4.2rem;
+        font-family: 'Ultra', serif;
+        color: #F48C06;
+        margin-top: 3.5rem; 
+        margin-right: 7.4rem;
+        margin-left: 7.4rem;
+        border: solid 0.4rem #DC2F02;
+        padding: 1.2rem;
+        border-radius: 20px;
+        background-color: #6930C3;
+        background-clip: padding-box;
+    }
+
+    form {
+        margin-bottom: 2rem;
+    }
+
+    .questionBox{
+        border: 5px #DC2F02 solid;
+        padding: 15px;
+        margin-top: 35px;
+        margin-bottom: 35px;
+        margin-right: 3.5rem;
+        margin-left: 3.5rem;
+        margin-bottom: 1.5rem;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        border-radius: 20px;
+        background-color: #FFE5D9;
+    }
+    
+    .rockBox {
+        border: 5px #DC2F02 solid;
+        border-radius: 20px;
+        margin-top: 20px;
+        margin-bottom: 20px;
+        margin-right: auto;
+        margin-left: auto;
+        width: 75%;
+        background: url(images/groovy-2-background.jpg) fixed;
+        display: flex;
+        flex-direction: column;
+    }
+
+
+}
+
+/* Desktop CSS */
+
+@media all and (min-width: 1024px) {
+
+    :root {
+        font-size: 16px;
+    }
+
+    main {
+        width: 80%;
+        margin: auto;
+        
+    }
+
+    header h1 {
+        width: 45%;
+        margin: auto;
+        text-align: center;
+        font-size: 4.5rem;
+        font-family: 'Ultra', serif;
+        color: #F48C06;
+        margin-top: 55px; 
+        border: solid 5px #DC2F02;
+        border-radius: 20px;
+        background-color: #6930C3;
+        background-clip: padding-box;
+    }
+
+    h2 {
+        text-align: center;
+    }
+    
+
+    .questionBox{
+        border: 5px #DC2F02 solid;
+        padding: 15px;
+        width: 75%;
+        margin: auto;
+        margin-top: 1.5rem;
+        margin-bottom: 3rem;
+        display: flex;
+        flex-direction: row;
+        align-items: right;
+        border-radius: 20px;
+        background-color: #FFE5D9;
+    }
+
+    
+    
+    .rockBox {
+        border: 5px #DC2F02 solid;
+        border-radius: 20px;
+        margin-top: 1.5rem;
+        margin-bottom: 3rem;
+        margin-left: auto;
+        margin-right: auto;
+        background: url(images/groovy-2-background.jpg) fixed;
+        display: flex;
+        flex-direction: row;
+        width: 45%;
+    }
+
+    button {
+
+       margin-top: 3rem;
+       margin-bottom: 5px;
+       border-radius: 20px;
+       border: solid 3px #DC2F02;
+       padding: 1.5rem;
+  
+    }
+
+    .result {
+        margin-top: 1.2rem;
+    }
+
+}

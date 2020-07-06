@@ -1,4 +1,10 @@
-* {
+/* :root {
+    font-size: 
+} */
+
+* 
+
+{
     box-sizing: border-box;
     margin: 0;
     padding: 0;
@@ -79,7 +85,7 @@ h3 {
 
 li {
     display: inline;
-    text-align: center;
+    /* text-align: center; */
     font-family: 'Noto Serif JP', serif;
     font-size: 15px;
     color: #293241;
@@ -157,5 +163,191 @@ button {
     text-align: center;
 }
 
-@media all and (min-width: 800px) {
+/* Mobile up to 480px */
+
+@media all and (max-width: 480px) {
+
+    :root {
+        font-size: 12px;
+    }
+    
+
+    header h1 {
+        text-align: center;
+        font-size: 1.7rem;
+        font-family: 'Ultra', serif;
+        color: #F48C06;
+        margin-top: 5rem; 
+        margin-right: 115px;
+        margin-left: 10px;
+        border: solid 3px #DC2F02;
+        padding: 15px;
+        border-radius: 20px;
+        background-color: #6930C3;
+        background-clip: padding-box;
+    }
+
+    /* .header-background {
+        background-color: #6930C3;
+        background-clip: padding-box;
+        border-radius: 20px
+    } */
+    
+    ul {
+        text-align: center;
+        list-style-type: none;
+    }
+    
+    
+    form  {
+        display: block; 
+        text-align: center;
+    
+    }
+    
+    fieldset {
+        width: 100%;
+        margin: 0 auto;
+        border: 0 none;
+    }
+    
+    
+    h2 {
+        font-size: 1.2rem;
+        font-family: 'Noto Serif JP', serif;
+        border: black;
+        margin: 25px;
+        text-align: center;
+        margin: 25px;
+        color: #293241;
+    }
+    
+    .result {
+        text-align: center;
+        margin-right: 100px;
+    }
+    
+    main {
+        width: 100%;
+        margin: 0 auto; ;
+    }
+    
+    
+    h3 {
+        text-align: center;
+        font-size: 10px;
+    }
+    
+    .js-quiz {
+        display: inline;
+    }
+    
+    li {
+        display: inline;
+        /* text-align: center; */
+        font-family: 'Noto Serif JP', serif;
+        font-size: 15px;
+        color: #293241;
+    }
+    
+    input[type="radio"] {
+    float: left;
+    }
+    
+    .buttonCenter {
+        text-align: center;
+        /* padding: 30px;
+        margin-top: 20px; */
+        
+    }
+    
+    .questionBox{
+        border: 3px #DC2F02 solid;
+        padding: 15px;
+        margin-top: 35px;
+        margin-bottom: 35px;
+        margin-right: 15px;
+        margin-left: 15px;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        border-radius: 20px;
+        background-color: #FFE5D9;
+    }
+    
+    .rockBox {
+        border: 3px #DC2F02 solid;
+        border-radius: 20px;
+        margin-top: 20px;
+        margin-bottom: 20px;
+        margin-left: 9px;
+        margin-right: 116px;
+        background: url(images/groovy-2-background.jpg) fixed;
+        display: flex;
+        flex-direction: column;
+    }
+    
+    .block {
+        display: block;
+        align-items: center;
+        justify-content: space-between;
+    }
+    
+    
+    p {
+        text-align: center;
+        font-family: 'Noto Serif JP', serif;
+        font-size: 1rem;
+        color: #293241;
+    }
+    
+    button {
+        text-align: center;
+        margin: 0 auto;
+        margin-top: 5px;
+        margin-bottom: 5px;
+        border-radius: 20px;
+        border: solid 2px #DC2F02;
+        padding: 12px;
+        font-family: 'Noto Serif JP', serif;
+        color: #F48C06;
+    }
+    
+    button {
+        background-color: #6930C3;
+        background-clip: padding-box;
+    }
+    
+    .end-quiz {
+        text-align: center;
+    }
+
 }
+
+/* 
+
+500px
+
+760px
+for "phone" 12px 
+:root {
+    font-size: 12px
+}
+
+p {
+    font-size: 1.2rem
+}
+
+
+for desktop and tablet 14-16px 
+
+:root {
+    font-size: 16px
+}
+
+p {
+    font-size: rem
+}
+
+*/
+
