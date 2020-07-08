@@ -132,32 +132,65 @@ function startQuiz() {
 function renderForm() {
     console.log('renderForm ran')
     if (currentQuestion < STORE.length-1) {
-           let formHTML = 
-`
-<form class="form">
-    <fieldset>
-        <h3></h3>
-        <ul class="js-quiz">
-
-        </ul>
-            <button type="button" class="submit-button button" >
-                Submit
-            </button>
-            <button type="button" class="next-button">
-                Next Question
-            </button>
-            <p>Question: <span class="js-q-tally">${STORE[11].questionTally++}</span> / 11   Score: <span class="js-score">${score}</span> / 11 </p>
-    </fieldset>
-</form>`;
-    $('.welcome-text').html(formHTML);
+    $('.welcome-text').html($(getQuestionTemplate()));
         $('h3').append(`<p>${STORE[currentQuestion].question}</p>`);
         generateAnswers();
 
     } else {
-        finalScore();
+        const great = [
+            "<p>You're a rockstar! Put another dime in the jukebox, baby.</p>"
+        ];
+    
+        const good = [
+            "<p>You're no jukebox hero, but ya did alright.</p>"
+        ];
+    
+        const poor = [
+            "<p>You need to listen to more rock-n'-roll. Back to the front!<p>"
+        ];
+    
+        if (score >= 8) {
+            message = great;
+        } else if (score >= 5) {
+            message = good;
+        } else {
+            message = poor;
+        };
+        $(finalResultsTemplate());
+             restartQuiz();
     }
     $('.next-button').hide();
 }
+
+function finalResultsTemplate() {
+    $('.welcome-text').html(
+        `<div class="end-quiz">
+        <h3>${message[0]}</h3>
+        <p>Your score is ${score} / 11</p>
+         <button type="button" class="restart-button button">Go Back to School</button>
+         </div>`);
+}
+
+
+function getQuestionTemplate() { 
+   return `
+    <form class="form">
+        <fieldset>
+            <h3></h3>
+            <ul class="js-quiz">
+    
+            </ul>
+                <button type="button" class="submit-button button" >
+                    Submit
+                </button>
+                <button type="button" class="next-button">
+                    Next Question
+                </button>
+                <p>Question: <span class="js-q-tally">${STORE[11].questionTally++}</span> / 11   Score: <span class="js-score">${score}</span> / 11 </p>
+        </fieldset>
+    </form>`;
+}
+
 
 // generates answers by dynamically accessing STORE array and assigning values to the <li> radio buttons
 function generateAnswers() {
@@ -229,40 +262,8 @@ function nextQuestion() {
     })
 }
 
-// creates responses for user's score
-//calls restartQuiz function
-function finalScore() {
-    console.log('finalScore ran')
-    const great = [
-        "<p>You're a rockstar! Put another dime in the jukebox, baby.</p>"
-    ];
-
-    const good = [
-        "<p>You're no jukebox hero, but ya did alright.</p>"
-    ];
-
-    const poor = [
-        "<p>You need to listen to more rock-n'-roll. Back to the front!<p>"
-    ];
-
-    if (score >= 8) {
-        message = great;
-    } else if (score >= 5) {
-        message = good;
-    } else {
-        message = poor;
-    };
-    
-    $('.welcome-text').html(
-        `<div class="end-quiz">
-        <h3>${message[0]}</h3>
-        <p>Your score is ${score} / 11</p>
-         <button type="button" class="restart-button button">Go Back to School</button>
-         </div>`);
-         restartQuiz();
-}
-
 // renders original HTML to start quiz and allows user to retake 
+// could also generate "starting point HTML" 
 function restartQuiz() {
     console.log('restartQuiz ran')
     $('.restart-button').click(function(event) {
@@ -284,7 +285,6 @@ function restartQuiz() {
 // starts quiz when page loads
 function handleQuestions() {
     startQuiz();
-    // renderForm();
     console.log('handleQuestions ran!')
 }; 
 
